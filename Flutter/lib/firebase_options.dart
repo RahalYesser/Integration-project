@@ -8,11 +8,11 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
+// / import 'firebase_options.dart';
+// / // ...
+// / await Firebase.initializeApp(
+// /   options: DefaultFirebaseOptions.currentPlatform,
+// / );
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -50,19 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBKwgnm5S0AmFmAo3TekYcXWpYZX1R_0Q0',
-    appId: '1:131525139159:web:bed10144a6f622d0692e92',
-    messagingSenderId: '131525139159',
-    projectId: 'projectv1-5add3',
-    authDomain: 'projectv1-5add3.firebaseapp.com',
-    storageBucket: 'projectv1-5add3.appspot.com',
+    apiKey: 'AIzaSyDvfgU7f0Fq-qeVMpZqbjp1zn3vCXiqaMM',
+    appId: '1:512290697530:web:a203ef654896839e07e003',
+    messagingSenderId: '512290697530',
+    projectId: 'flutterfirebaseintegrati-7006a',
+    authDomain: 'flutterfirebaseintegrati-7006a.firebaseapp.com',
+    storageBucket: 'flutterfirebaseintegrati-7006a.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBWcyzCAkHT16xQeEobk3uclVzIKVnhv_c',
-    appId: '1:131525139159:android:dc79ba70f1a36dbe692e92',
-    messagingSenderId: '131525139159',
-    projectId: 'projectv1-5add3',
-    storageBucket: 'projectv1-5add3.appspot.com',
+    apiKey: 'AIzaSyCnT7Z_KHt-7P18CiZHnlv-y4HNsSQnJL4',
+    appId: '1:512290697530:android:c1b5bd04d2dfe80607e003',
+    messagingSenderId: '512290697530',
+    projectId: 'flutterfirebaseintegrati-7006a',
+    storageBucket: 'flutterfirebaseintegrati-7006a.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyD0BWR2XIO7RqWLEpb6q9sVg75_lxORzuo',
+    appId: '1:512290697530:ios:670e1bad141cfade07e003',
+    messagingSenderId: '512290697530',
+    projectId: 'flutterfirebaseintegrati-7006a',
+    storageBucket: 'flutterfirebaseintegrati-7006a.appspot.com',
+    iosClientId: '512290697530-13st4ndl0v07s55o7lag5f8e4hh065ko.apps.googleusercontent.com',
+    iosBundleId: 'com.example.galerieImagesApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyD0BWR2XIO7RqWLEpb6q9sVg75_lxORzuo',
+    appId: '1:512290697530:ios:670e1bad141cfade07e003',
+    messagingSenderId: '512290697530',
+    projectId: 'flutterfirebaseintegrati-7006a',
+    storageBucket: 'flutterfirebaseintegrati-7006a.appspot.com',
+    iosClientId: '512290697530-13st4ndl0v07s55o7lag5f8e4hh065ko.apps.googleusercontent.com',
+    iosBundleId: 'com.example.galerieImagesApp',
   );
 }

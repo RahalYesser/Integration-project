@@ -15,6 +15,7 @@ class AuthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       
+      textColor: Colors.white,
       minWidth: double.infinity,
       height: 40,
       onPressed: onPressed,
@@ -22,6 +23,7 @@ class AuthButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       
       child: Text(
+
         text,
         style: const TextStyle(
           fontWeight: FontWeight.w600,

@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:projectv1/features/auth/presentation/pages/login_page_admin.dart';
+import '../features/pages/presentation/pages/admin_page.dart';
 import '/core/pages/page_not_found.dart';
 import '/features/auth/presentation/bloc/auth/auth_bloc.dart';
 
@@ -46,6 +48,13 @@ class AppRouter {
               return UpdateUserPage();
             },
           ),
+          GoRoute(
+            path: 'admin_login',
+            name: 'admin_login',
+            builder: (context, state) {
+              return LoginPageAdmin();
+            },
+          ),
         ],
       ),
       GoRoute(
@@ -53,6 +62,12 @@ class AppRouter {
           name: 'profile',
           builder: (context, state) {
             return ProfilePage();
+          }),
+      GoRoute(
+          path: '/admin',
+          name: 'admin',
+          builder: (context, state) {
+            return AdminPage();
           }),
     ],
     errorBuilder: (context, state) => PageNotFound(),

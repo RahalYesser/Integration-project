@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../widgets/auth_btn.dart';
 import '/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import '/features/auth/presentation/widgets/login_form.dart';
 import 'package:go_router/go_router.dart';
@@ -26,7 +27,6 @@ class LoginPage extends StatelessWidget {
       child: Scaffold(
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            
             children: <Widget>[
               Container(
                 height: MediaQuery.of(context).size.height / 3,
@@ -39,19 +39,19 @@ class LoginPage extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
               ),
               const SizedBox(
-                height: 30,
+                height: 40,
               ),
               LoginForm(),
-              
+
               // ignore: prefer_const_constructors
-              Text(
+              const Text(
                 'Not a member? ',
                 // ignore: prefer_const_constructors
                 style: TextStyle(
                   color: Colors.black87,
                   fontStyle: FontStyle.italic,
                 ),
-              ),
+                ),
               TextButton(
                   style: TextButton.styleFrom(
                     textStyle: const TextStyle(
@@ -66,7 +66,37 @@ class LoginPage extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.orange,
-                      )))
+                      ))),
+              
+              const  Divider(
+                 color: Colors.black
+              ),
+              Row( 
+                mainAxisAlignment: MainAxisAlignment.center,
+
+                children: <Widget>[
+                  const Text(
+                    'Login to admin interface here : ',
+                    // ignore: prefer_const_constructors
+                     style: TextStyle(
+                     color: Colors.black87,
+                     fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  const SizedBox(width: 30),
+                  MaterialButton(
+                    textColor: Colors.white,
+                    child:const Text('Admin'),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    onPressed: () {
+                    GoRouter.of(context).goNamed("admin_login");
+                    },
+                    color: Colors.blue,
+                    )
+                ],
+              )
+    
+             
             ]),
       ),
     );
