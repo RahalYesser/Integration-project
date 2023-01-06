@@ -1,0 +1,108 @@
+ <mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Trainings</div>
+      <div class="page__content shadow p-3 position-relative">
+        <div class="page__content-data position-absolute text-center">
+        </div>
+        <mat-grid-list cols="3" >
+          <mat-grid-tile>
+          <div class="flip-card" *ngFor="let training of Trainings; let i = index">
+            <div class="flip-card-inner">
+              <div class="flip-card-front flip-card__side">
+                <h1 class="front_txt">{{training.name}}</h1>
+              </div>
+              <div class="flip-card-back flip-card__side">
+                <!-- <p>{{training.date}}</p>
+                <p>{{training.trainerName}}</p>
+                <p>{{training.description}}</p> -->
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#EditModal" >Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(training._id, i)">Delete</button>
+              </div>
+            </div>
+          </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-card>
+              <mat-card-content data-bs-toggle="modal" data-bs-target="#AddModal">
+                <div class="card-body"  >
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2 ml-4">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Add Training</div>
+                    </div>
+                    <div class="col-auto mr-5">
+                        <i class="fas fa-plus fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div></mat-card-content>
+            </mat-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+
+
+    <!-- ADD Modal -->
+    <div class="modal fade" id="AddModal"  aria-labelledby="AddModal" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+              <div class="modal-body text-center pb-5">
+                  <div class="container">
+                              <div class="container">
+                                  <!-- Contact Section Heading-->
+                                  <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">ADD TRAINING</h2>
+                                  <!-- Icon Divider-->
+                                  <div class="divider-custom">
+                                      <div class="divider-custom-line"></div>
+                                      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                      <div class="divider-custom-line"></div>
+                                  </div>
+                                  <!-- Contact Section Form-->
+                                  <div class="row justify-content-center">
+                                      <div class="col-lg-8 col-xl-7">
+                                      <form  [formGroup]="trainingForm" (ngSubmit)="onSubmit()">
+                                           <!-- pic-->
+                                          <!-- Name input-->
+                                          <div class="form-floating mb-3">
+                                              <input class="form-control" formControlName="name" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required"   name="nomFormation"/>
+                                              <label for="name">Training Name</label>
+                                              <div class="invalid-feedback" data-sb-feedback="name:required" >A name is required.</div>
+                                          </div>
+                                          <!-- Email address input-->
+                                          <div class="form-floating mb-3">
+                                              <input class="form-control" formControlName="trainerName" type="text" placeholder="name@example.com" data-sb-validations="required,email" name="nomFormateur"/>
+                                              <label for="email">Trainer Name</label>
+                                              <div class="invalid-feedback" data-sb-feedback="email:required" >Trainer Name is required.</div>
+                                          </div>
+                                          <!-- Date number input-->
+                                          <div class="form-floating mb-3 input-group date" id='datetimepicker1'>
+                                              <input class="form-control" type="date" name="date" formControlName="date"/>
+                                              <label for="phone">Date & Time</label>
+                                              <div class="invalid-feedback" data-sb-feedback="phone:required" >Date is required.</div>
+                                          </div>
+                                          <!-- Message input-->
+                                          <div class="form-floating mb-3">
+                                              <textarea class="form-control" formControlName="description" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" name="description"></textarea>
+                                              <label for="message">Description</label>
+                                          </div>
+                                          <button class="btn btn-primary btn-xl" type="submit"  >ADD</button>
+                                      </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+     </div>
+    </div>
+
+
+</mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,117 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '/features/auth/domain/entities/user_entity.dart';
+import '/features/auth/presentation/bloc/auth/auth_bloc.dart';
+import '/features/auth/presentation/widgets/auth_btn.dart';
+import 'package:go_router/go_router.dart';
+import 'package:validators/validators.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
+  @override
+  LoginFormState createState() {
+    return LoginFormState();
+  }
+}
+
+class LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _pwdController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _pwdController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Email Required'; //dans le dossier Strings
+                }
+                if (!isEmail(value)) {
+                  return "email incorrect";
+                }
+                return null;
+              },
+              keyboardType: TextInputType.emailAddress,
+              controller: _emailController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter your Email',
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: TextFormField(
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'password Required'; //!! dans Strings
+                }
+                return null;
+              },
+              controller: _pwdController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter your password',
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            /* child: ElevatedButton(
+              onPressed: validateAndLoginUser,
+              child: const Text('Login'),
+            ), */
+            child: BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                if (state is LoginProgressState) {
+                  return const CircularProgressIndicator(
+                    color: Colors.blue,
+                  );
+                } else {
+                  return AuthButton(
+                      text: "Login",
+                      onPressed: validateAndLoginUser,
+                      color: Colors.blue);
+
+                      
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void validateAndLoginUser() {
+    if (_formKey.currentState!.validate()) {
+      final user = UserEntity(
+          name: "",
+          email: _emailController.text.trim(),
+          password: _pwdController.text.trim());
+
+      BlocProvider.of<AuthBloc>(context).add(LoginEvent(user: user));
+    }
+  }
+}
+
+

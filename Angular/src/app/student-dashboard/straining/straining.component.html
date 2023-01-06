@@ -1,0 +1,34 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-ssidenav></app-ssidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Trainings</div>
+      <div class="page__content shadow p-3 position-relative">
+        <div class="page__content-data position-absolute text-center">
+        </div>
+        <mat-grid-list cols="3" >
+          <mat-grid-tile>
+          <div class="flip-card ml-4" *ngFor="let training of Trainings; let i = index">
+            <div class="flip-card-inner">
+              <div class="flip-card-front flip-card__side">
+                <h1 class="front_txt">{{training.name}}</h1>
+              </div>
+              <div class="flip-card-back flip-card__side">
+                <!-- <p>{{training.date}}</p>
+                <p>{{training.trainerName}}</p>
+                <p>{{training.description}}</p> -->
+                <button class="btn btn-sm btn-primary">Register</button>
+              </div>
+            </div>
+          </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+</mat-drawer-content>
+</mat-drawer-container>
