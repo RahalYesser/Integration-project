@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const trainingRoute = express.Router();
 let Training = require('../model/Training');
+
 // Add Training
 trainingRoute.route('/add-training').post((req, res, next) => {
     Training.create(req.body, (error, data) => {
@@ -12,6 +13,7 @@ trainingRoute.route('/add-training').post((req, res, next) => {
     }
   })
 });
+
 // Get all Training
 trainingRoute.route('/').get((req, res) => {
     Training.find((error, data) => {
@@ -22,6 +24,7 @@ trainingRoute.route('/').get((req, res) => {
     }
   })
 })
+
 // Get Training
 trainingRoute.route('/read-training/:id').get((req, res) => {
     Training.findById(req.params.id, (error, data) => {
@@ -47,6 +50,7 @@ trainingRoute.route('/update-training/:id').put((req, res, next) => {
     }
   })
 })
+
 // Delete Training
 trainingRoute.route('/delete-training/:id').delete((req, res, next) => {
     Training.findByIdAndRemove(req.params.id, (error, data) => {

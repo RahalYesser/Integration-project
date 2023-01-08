@@ -12,35 +12,20 @@ import { CrudService } from 'src/app/service/crud.service';
 export class TrainingsComponent implements OnInit {
   trainingForm: FormGroup;
   Trainings: any = [];
-  getId: any;
-  // updateForm: FormGroup;
 
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private activatedRoute: ActivatedRoute,
-    private crudService: CrudService
+    private crudService: CrudService,
+
     ) {
       this.trainingForm = this.formBuilder.group({
       name: [''],
       trainerName: [''],
       date: [''],
       description: ['']})
-      // this.getId = this.activatedRoute.snapshot.paramMap.get('id');
-      // this.crudService.GetTraining(this.getId).subscribe(res => {
-      //   this.updateForm.setValue({
-      //     name: res['name'],
-      //     trainer: res['trainerName'],
-      //     date: res['date'],
-      //     description: res['description']
-      //   });
-      // });
-      // this.updateForm = this.formBuilder.group({
-      //   name: [''],
-      //   price: [''],
-      //   description: ['']
-      // })
+
     }
 
     ngOnInit(): void {
@@ -49,6 +34,7 @@ export class TrainingsComponent implements OnInit {
       this.Trainings =res;
     });
   }
+
   delete(id:any, i:any) {
     console.log(id);
     if(window.confirm('Do you want to go ahead?')) {
@@ -71,16 +57,6 @@ export class TrainingsComponent implements OnInit {
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
-
-  // onUpdate(): any {
-  //   this.crudService.updateTraining(this.getId, this.updateForm.value)
-  //   .subscribe(() => {
-  //       console.log('Data updated successfully!')
-  //       this.ngZone.run(() => this.router.navigateByUrl('/trainings'))
-  //     }, (err) => {
-  //       console.log(err);
-  //   });
-  // }
 }
 export class CardOverviewExample {}
 export class GridListOverviewExample {}
