@@ -1,53 +1,50 @@
  <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
-    <!-- <mat-drawer mode="side" opened="true"> -->
     <app-sidenav></app-sidenav>
   </mat-drawer>
   <mat-drawer-content>
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
 
     <div class="container-fluid page">
-      <div class="d-flex page__box p-3 mt-2">Trainings</div>
+      <div class="page__box p-3 mt-2">Trainings  <button class="add" data-bs-toggle="modal" data-bs-target="#AddModal">Add Training</button></div>
       <div class="page__content shadow p-3 position-relative">
-        <div class="page__content-data position-absolute text-center">
-        </div>
         <mat-grid-list cols="3" >
-          <mat-grid-tile>
-          <div class="flip-card" *ngFor="let training of Trainings; let i = index">
-            <div class="flip-card-inner">
-              <div class="flip-card-front flip-card__side">
-                <h1 class="front_txt">{{training.name}}</h1>
-              </div>
-              <div class="flip-card-back flip-card__side">
-                <!-- <p>{{training.date}}</p>
-                <p>{{training.trainerName}}</p>
-                <p>{{training.description}}</p> -->
-                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#EditModal" >Edit</button>
-                <button class="btn btn-sm btn-danger" (click)="delete(training._id, i)">Delete</button>
+          <mat-grid-tile class="flip-card ml-4" *ngFor="let training of Trainings; let i = index">
+            <div class="container mx-auto mt-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h6 class="card-title">{{training.name}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Web</h6>
+                <h6 class="card-text">{{training.trainerName}}</h6>
+                <h6 class="card-text">{{training.date}}</h6>
+                <h6 class="card-text">{{training.description}}</h6>
+                   <a href="#" class="btn mr-5" routerLink="/edit/{{training._id}}"><i class="fas fa-edit"></i> Edit</a>
+                   <a href="#" class="btn mr-5" (click)="delete(training._id, i)"><i class="fas fa-edit"></i> Delete</a>
+                   <!-- <ul *ngFor="let training of Trainings;let i = index">
+                     <li *ngFor="let course of Courses;let i = index">
+                      <span ngIf*="training.trainerName === course.Sname;">
+                        {{course.Sname}}
+                      </span>
+                     </li>
+                   </ul> -->
               </div>
             </div>
-          </div>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <mat-card>
-              <mat-card-content data-bs-toggle="modal" data-bs-target="#AddModal">
-                <div class="card-body"  >
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2 ml-4">
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Add Training</div>
-                    </div>
-                    <div class="col-auto mr-5">
-                        <i class="fas fa-plus fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div></mat-card-content>
-            </mat-card>
+            </div>
+            </div>
+            </div>
           </mat-grid-tile>
         </mat-grid-list>
       </div>
     </div>
 
 
+
+
+
+</mat-drawer-content>
+</mat-drawer-container>
     <!-- ADD Modal -->
     <div class="modal fade" id="AddModal"  aria-labelledby="AddModal" aria-hidden="true">
       <div class="modal-dialog modal-xl">
@@ -83,7 +80,7 @@
                                           </div>
                                           <!-- Date number input-->
                                           <div class="form-floating mb-3 input-group date" id='datetimepicker1'>
-                                              <input class="form-control" type="date" name="date" formControlName="date"/>
+                                              <input class="form-control" type="datetime-local" name="date" formControlName="date"/>
                                               <label for="phone">Date & Time</label>
                                               <div class="invalid-feedback" data-sb-feedback="phone:required" >Date is required.</div>
                                           </div>
@@ -102,7 +99,3 @@
         </div>
      </div>
     </div>
-
-
-</mat-drawer-content>
-</mat-drawer-container>

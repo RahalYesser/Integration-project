@@ -7711,7 +7711,7 @@ textarea.form-control-lg {
 
 
 .bg-primary {
-  background-color: rgba(26, 188, 156, 1) !important;
+  background-color: #0066be !important;
 }
 
 .bg-secondary {
@@ -11205,7 +11205,7 @@ html {
   width: 100%;
   max-width: 7rem;
   height: 0.25rem;
-  background-color: #2c3e50;
+  background-color: white;
   border-radius: 1rem;
   border-color: #2c3e50;
 }
@@ -11216,7 +11216,7 @@ html {
   margin-left: 1rem;
 }
 .divider-custom .divider-custom-icon {
-  color: #2c3e50;
+  color: white;
   font-size: 2rem;
 }
 .divider-custom.divider-light .divider-custom-line {
