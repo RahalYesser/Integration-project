@@ -27,7 +27,10 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => di.sl<AuthBloc>(),
+          create: (_) {
+            return di.sl<AuthBloc>()
+            ;
+          },
         ),
         BlocProvider(create: (_) => di.sl<UserManagerBloc>()),
       ],
