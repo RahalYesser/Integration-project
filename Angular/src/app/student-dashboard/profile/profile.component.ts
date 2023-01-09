@@ -1,12 +1,40 @@
 import { Component } from '@angular/core';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { KeycloakService } from 'keycloak-angular';
+import { HttpService } from "../../service/http.service";
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+  sendForm: FormGroup;
 
+  constructor(private keycloakService: KeycloakService,
+    public formBuilder: FormBuilder,
+    public http: HttpService){
+      this.sendForm = this.formBuilder.group({
+        email: [''],
+        message: [''],
+        })
+    }
+  async ngOnInit(): Promise<void>
+  {
+    console.log(this.keycloakService.getUsername());
+    let userDetails = await this.keycloakService.loadUserProfile();
+    console.log(userDetails);
+  }
+  onsend(){
+    this.http.sendEmail(this.sendForm.value).subscribe(
+      data => {
+        let res:any = data;
+        console.log(res)
+        console.log(
+          `successfully mail has been sent`
+        );
+      },
+    );
+  }
 }
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -29,27 +57,5 @@ window.addEventListener('DOMContentLoaded', event => {
 
   // Shrink the navbar when page is scrolled
   document.addEventListener('scroll', navbarShrink);
-
-  // Activate Bootstrap scrollspy on the main nav element
-  // const mainNav = document.body.querySelector('#mainNav');
-  // if (mainNav) {
-  //     new bootstrap.ScrollSpy(document.body, {
-  //         target: '#mainNav',
-  //         offset: 72,
-  //     });
-  // };
-
-  // // Collapse responsive navbar when toggler is visible
-  // const navbarToggler = document.body.querySelector('.navbar-toggler');
-  // const responsiveNavItems = [].slice.call(
-  //     document.querySelectorAll('#navbarResponsive .nav-link')
-  // );
-  // responsiveNavItems.map(function (responsiveNavItem) {
-  //     responsiveNavItem.addEventListener('click', () => {
-  //         if (window.getComputedStyle(navbarToggler).display !== 'none') {
-  //             navbarToggler?.click();
-  //         }
-  //     });
-  // });
 
 });

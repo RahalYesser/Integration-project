@@ -29,7 +29,7 @@ mat-divider {
       border-radius: 5px;
       margin: 0 8px;
       &:hover {
-        background: #2c3344 !important;
+        background: #000042 !important;
       }
     }
   }
@@ -44,9 +44,9 @@ list-item-active {
   color: #f2f5f7 !important;
   ::ng-deep {
     .mat-list-item-content {
-      background: #2c3344 !important;
+      background: #000042 !important;
       &:hover {
-        background: #2c3344 !important;
+        background: #000042 !important;
       }
     }
   }

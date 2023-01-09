@@ -1,0 +1,52 @@
+    <!-- Edit Modal -->
+      <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+              <div class="modal-header border-0"></div>
+              <div class="modal-body text-center pb-5">
+                  <div class="container">
+                              <div class="container">
+                                  <!-- Contact Section Heading-->
+                                  <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">EDIT TRAINING</h2>
+                                  <!-- Icon Divider-->
+                                  <div class="divider-custom">
+                                      <div class="divider-custom-line"></div>
+                                      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                      <div class="divider-custom-line"></div>
+                                  </div>
+                                  <!-- Contact Section Form-->
+                                  <div class="row justify-content-center">
+                                      <div class="col-lg-8 col-xl-7">
+                                      <form [formGroup]="updateForm" (ngSubmit)="onUpdate()" >
+                                           <!-- pic-->
+                                          <!-- Name input-->
+                                          <div class="form-floating mb-3">
+                                              <input class="form-control" formControlName="name" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required"   name="nomFormation"/>
+                                              <label for="name">Training Name</label>
+                                              <div class="invalid-feedback" data-sb-feedback="name:required" >A name is required.</div>
+                                          </div>
+                                          <!-- Email address input-->
+                                          <div class="form-floating mb-3">
+                                              <input class="form-control" formControlName="trainerName" type="text" placeholder="name@example.com" data-sb-validations="required,email" name="nomFormateur"/>
+                                              <label for="email">Trainer Name</label>
+                                              <div class="invalid-feedback" data-sb-feedback="email:required" >Trainer Name is required.</div>
+                                          </div>
+                                          <!-- Date number input-->
+                                          <div class="form-floating mb-3 input-group date" id='datetimepicker1'>
+                                              <input class="form-control" type="text" name="date" formControlName="date"/>
+                                              <label for="phone">Date & Time</label>
+                                              <div class="invalid-feedback" data-sb-feedback="phone:required" >Date is required.</div>
+                                          </div>
+                                          <!-- Message input-->
+                                          <div class="form-floating mb-3">
+                                              <textarea class="form-control" formControlName="description" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" name="description"></textarea>
+                                              <label for="message">Description</label>
+                                          </div>
+                                          <button class="btn btn-primary btn-xl" type="submit"  >Edit</button>
+                                      </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+     </div>

@@ -4,14 +4,11 @@ let Training = new Schema({
   name: {
     type: String
   },
+  trainerName: {
+    type: String
+  },
   date: {
     type: Date
-  },
-  imageUrl:{
-    type: String
-  },
-  trainer_name: {
-    type: String
   },
   description: {
     type: String

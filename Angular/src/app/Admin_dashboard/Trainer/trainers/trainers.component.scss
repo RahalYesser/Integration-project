@@ -1,0 +1,51 @@
+@import "../../dashboard/dashboard.component.scss";
+
+.radius-15 {
+	border-radius: 15px;
+}
+.list-inline-item {
+	&:not(:last-child) {
+		margin-right: .5rem;
+	}
+}
+.contacts-social {
+	a {
+		font-size: 16px;
+		width: 36px;
+		height: 36px;
+		line-height: 36px;
+		background: #ffffff;
+		border: 1px solid #eeecec;
+		text-align: center;
+		border-radius: 50%;
+		color: #2b2a2a;
+	}
+}
+.bg-facebook {
+	background-color: #3b5998 !important;
+}
+.bg-twitter {
+	background-color: #55acee !important;
+}
+.bg-linkedin {
+	background-color: #0976b4 !important;
+}
+
+.add{
+  border: 5px solid;
+  border-radius: 5px;
+  background: var(--gradient) !important;
+  border-image-source:  var(--gradient) !important;
+  text-decoration: none;
+  color: silver;
+  margin-left: 800px;
+  font-size: 20px;
+ }
+ .add:hover, .add:focus {
+  background: var(--gradient) !important;
+-webkit-background-clip: none !important;
+-webkit-text-fill-color: #fff !important;
+border: 5px solid #fff !important;
+box-shadow: #222 1px 0 10px;
+text-decoration: underline;
+}
