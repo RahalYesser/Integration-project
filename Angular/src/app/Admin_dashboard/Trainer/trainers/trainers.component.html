@@ -1,0 +1,104 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+    <div class="container-fluid page">
+      <div class=" page__box p-3 mt-2">Trainers list <button class="add" data-bs-toggle="modal" data-bs-target="#AddModal">Add Training <span class="sr-only"></span></button></div>
+
+      <div class="page__content shadow p-3 position-relative">
+            <mat-grid-list cols="3" >
+              <mat-grid-tile class="col" *ngFor="let trainer of Trainers; let i = index">
+                <div >
+                  <div class="card radius-15">
+                    <div class="card-body text-center">
+                      <div class="p-4 border radius-15">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="110" height="110" class="rounded-circle shadow" alt="">
+                        <h5 class="mb-0">{{trainer.name}}</h5>
+                        <p class="mb-3">{{trainer.email}}</p>
+                        <div class="list-inline contacts-social mt-3 mb-3">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-facebook fs-3"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                            </li>
+                        </ul>
+                        </div>
+                        <div class="d-grid"> <a href="#" class="btn btn-outline-primary radius-15">Contact Me</a>
+                        </div>
+                        <button class="btn btn-sm btn-primary" routerLink="/edit-Trainer/{{trainer.id}}">Edit</button>
+                        <button class="btn btn-sm btn-danger" (click)="delete(trainer.id, i)">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+      </div>
+    </div>
+</mat-drawer-content>
+</mat-drawer-container>
+
+<!-- ADD Modal -->
+<div class="modal fade" id="AddModal"  aria-labelledby="AddModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+          <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <div class="modal-body text-center pb-5">
+              <div class="container">
+                          <div class="container">
+                              <!-- Contact Section Heading-->
+                              <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">ADD TRAINER</h2>
+                              <!-- Icon Divider-->
+                              <div class="divider-custom">
+                                  <div class="divider-custom-line"></div>
+                                  <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                  <div class="divider-custom-line"></div>
+                              </div>
+                              <!-- Contact Section Form-->
+                              <div class="row justify-content-center">
+                                  <div class="col-lg-8 col-xl-7">
+                                  <form  [formGroup]="trainerForm" (ngSubmit)="onSubmit()">
+                                       <!-- pic-->
+                                      <!-- Name input-->
+                                      <div class="form-floating mb-3">
+                                          <input class="form-control" formControlName="name" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required"   name="nom"/>
+                                          <label for="name">Training Name</label>
+                                          <div class="invalid-feedback" data-sb-feedback="name:required" >A name is required.</div>
+                                      </div>
+                                      <!-- Email address input-->
+                                      <div class="form-floating mb-3">
+                                          <input class="form-control" formControlName="email" type="text" placeholder="name@example.com" data-sb-validations="required,email" name="email"/>
+                                          <label for="email">Trainer email</label>
+                                          <div class="invalid-feedback" data-sb-feedback="email:required" >Trainer email is required.</div>
+                                      </div>
+                                      <!-- Email address input-->
+                                      <div class="form-floating mb-3">
+                                        <input class="form-control" formControlName="image" type="url" placeholder="name@example.com" data-sb-validations="required,email" name="image"/>
+                                        <label for="email">Trainer image</label>
+                                        <div class="invalid-feedback" data-sb-feedback="email:required" >Trainer pic is required.</div>
+                                    </div>
+                                      <!-- Message input-->
+                                      <div class="form-floating mb-3">
+                                          <input class="form-control" formControlName="password" id="message" type="password" placeholder="Password"  name="password"/>
+                                          <label for="message">Password</label>
+                                      </div>
+
+                                      <button class="btn btn-primary btn-xl" type="submit">ADD</button>
+                                  </form>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+    </div>
+ </div>
+</div>

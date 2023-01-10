@@ -1,8 +1,8 @@
-import { Component, NgZone, OnInit} from '@angular/core';
+import { Component, NgZone} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router,ActivatedRoute  } from '@angular/router';
 import { CrudService } from 'src/app/service/crud.service';
-
+import { CourseService } from 'src/app/service/course.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-straining',
@@ -10,18 +10,18 @@ import { CrudService } from 'src/app/service/crud.service';
   styleUrls: ['./straining.component.scss']
 })
 export class StrainingComponent {
-  trainingForm: FormGroup;
+  courseForm: FormGroup;
   Trainings: any = [];
-  getId: any;
+  // Courses: any = [];
 
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
+    private crudService: CrudService,
     private ngZone: NgZone,
-    private activatedRoute: ActivatedRoute,
-    private crudService: CrudService
+    private courseService: CourseService,
     ) {
-      this.trainingForm = this.formBuilder.group({
+      this.courseForm = this.formBuilder.group({
       name: [''],
       trainerName: [''],
       date: [''],
@@ -33,16 +33,20 @@ export class StrainingComponent {
       console.log(res)
       this.Trainings =res;
     });
+    // this.courseService.GetCourses().subscribe((res: any) => {
+    //   console.log(res)
+    //   this.Courses =res;
+    // });
   }
-  // onSubmit(): any {
-  //   this.crudService.AddTraining(this.trainingForm.value)
-  //   .subscribe(() => {
-  //       console.log('Data added successfully!')
-  //       this.ngZone.run(() => (<any>this.router).navigateByUrl('/trainings'))
-  //     }, (err) => {
-  //       console.log(err);
-  //   });
-  // }
+  onSubmit(): any {
+    this.courseService.AddCourse(this.courseForm.value)
+    .subscribe(() => {
+        console.log('Data added successfully!')
+        this.ngZone.run(() => (<any>this.router).navigateByUrl('/courses'))
+      }, (err) => {
+        console.log(err);
+    });
+  }
   title = 'admin';
   sideBarOpen = true;
   sideBarToggler() {

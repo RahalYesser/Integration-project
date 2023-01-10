@@ -3,7 +3,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Admin_dashboard/header/header.component';
 import { DashboardComponent } from './Admin_dashboard/dashboard/dashboard.component';
@@ -15,22 +15,25 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { TrainingsComponent } from './Admin_dashboard/trainings/trainings.component';
+import { TrainingsComponent } from './Admin_dashboard/Training/trainings/trainings.component';
 import { MatTreeModule} from '@angular/material/tree';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule} from '@angular/material/card';
 import { StudentsComponent } from './Admin_dashboard/students/students.component';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule} from '@angular/material/grid-list';
 import { ProfileComponent } from './student-dashboard/profile/profile.component';
 import { StrainingComponent } from './student-dashboard/straining/straining.component';
 import { SsidenavComponent } from './student-dashboard/ssidenav/ssidenav.component';
 import { SdashboardComponent } from './student-dashboard/sdashboard/sdashboard.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { TrainersComponent } from './Admin_dashboard/Trainer/trainers/trainers.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { LandingPageComponent } from './Landing-page/landing-page.component';
-//import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { EditComponent } from './Admin_dashboard/Training/edit/edit.component';
+import { EditTrainerComponent } from './Admin_dashboard/Trainer/edit-trainer/edit-trainer.component';
 
-/*
 function kcFactory(kcService: KeycloakService) {
   return () =>
     kcService.init({
@@ -47,10 +50,9 @@ function kcFactory(kcService: KeycloakService) {
 
       }
     });
-}*/
+}
 @NgModule({
   declarations: [
-    LandingPageComponent,
     AppComponent,
     HeaderComponent,
     DashboardComponent,
@@ -61,6 +63,10 @@ function kcFactory(kcService: KeycloakService) {
     StrainingComponent,
     SsidenavComponent,
     SdashboardComponent,
+    TrainersComponent,
+    LandingPageComponent,
+    EditComponent,
+    EditTrainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,8 +74,10 @@ function kcFactory(kcService: KeycloakService) {
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule,
     FormsModule,
+    KeycloakAngularModule,
+    // NgModule,
+    // NgbModule,
     // * MATERIAL IMPORTS
     MatSidenavModule,
     MatToolbarModule,
@@ -82,14 +90,15 @@ function kcFactory(kcService: KeycloakService) {
     MatTableModule,
     MatCardModule,
     MatGridListModule,
-    
+    MatPaginatorModule,
+    MatFormFieldModule,
   ],
   providers: [
-    /*{
+   {
     provide: APP_INITIALIZER,
     useFactory: kcFactory,
     multi: true,
-    deps: [KeycloakService]}*/
+    deps: [KeycloakService]}
   ],
   bootstrap: [AppComponent],
 })

@@ -49,6 +49,7 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
     };
 
     final response =
+
         await client.post(Uri.parse(BASE_URL + "create"), body: json.encode(body),
         headers: {
         "content-type" : "application/json",
@@ -58,6 +59,11 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
 
 
     if (response.statusCode == 200) {
+
+        await client.post(Uri.parse(BASE_URL + "create"), body: body);
+
+    if (response.statusCode == 201) {
+
       return Future.value(unit);
     } else {
       print(response.statusCode);
@@ -71,9 +77,12 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
   Future<Unit> deletePost(int postId) async {
     final response = await client.delete(
       Uri.parse(BASE_URL + "delete/${postId.toString()}"),
+
       headers: {"Content-Type": "application/json",
                  "accept" : "application/json",
       },
+      headers: {"Content-Type": "application/json"},
+
     );
 
     if (response.statusCode == 200) {
@@ -95,12 +104,19 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
       "description": postModel.description,
     };
 
+
     final response = await client.put(
       Uri.parse(BASE_URL + "update"),body: json.encode(body),
         headers: {
         "content-type" : "application/json",
         "accept" : "application/json",
       }
+
+    final response = await client.patch(
+      Uri.parse(BASE_URL + "update"),
+
+      body: body,
+
        
     );
 

@@ -29,6 +29,9 @@ class DeletePostBtnWidget extends StatelessWidget {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text("Deleted Successfully"),backgroundColor: Colors.green,));
       },
+
+      onPressed: () => deleteDialog(context, postId),
+
       icon: Icon(Icons.delete_outline),
       label: Text("Delete"),
     );
@@ -67,4 +70,4 @@ class DeletePostBtnWidget extends StatelessWidget {
           );
         });
   }
-}
+

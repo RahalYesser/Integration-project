@@ -13,6 +13,9 @@ import {
 })
 
 export class CrudService {
+  GetTrainers() {
+    throw new Error('Method not implemented.');
+  }
 
   // Node/Express API
   REST_API: string = 'http://localhost:8000/api';
