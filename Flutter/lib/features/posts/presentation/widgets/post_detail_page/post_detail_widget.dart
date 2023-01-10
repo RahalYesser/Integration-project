@@ -76,7 +76,6 @@ class PostDetailWidget extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              
 
               db.collection('courses').doc(user!.uid).update({
                 "course": FieldValue.arrayUnion([post.name])
