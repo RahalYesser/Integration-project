@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthenticatedState) {
-          GoRouter.of(context).goNamed('profile');
+          GoRouter.of(context).goNamed('Posts');
         } else if (state is AuthErrorState) {
           SnackBarMessage()
               .showErrorSnackBar(message: state.message, context: context);
@@ -66,7 +66,37 @@ class LoginPage extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.orange,
-                      )))
+                      )
+                    )
+              ),
+              const  Divider(
+                 color: Colors.black
+              ),
+              Row( 
+                mainAxisAlignment: MainAxisAlignment.center,
+
+                children: <Widget>[
+                  const Text(
+                    "You'd like to sign as administrator ?",
+                    // ignore: prefer_const_constructors
+                     style: TextStyle(
+                     color: Colors.black87,
+                     fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  const SizedBox(width: 30),
+                  MaterialButton(
+                    textColor: Colors.white,
+                    child:const Text('Admin'),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    onPressed: () {
+                    GoRouter.of(context).goNamed("admin_login");
+                    },
+                    color: Colors.blue,
+                    )
+                ],
+              )
+
             ]),
       ),
     );

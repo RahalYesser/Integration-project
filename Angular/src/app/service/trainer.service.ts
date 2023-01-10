@@ -15,17 +15,17 @@ import {
 export class TrainerService {
 
   // Node/Express API
-  REST_API: string = 'http://localhost:8081/TRAINER-SERVICE';
+  REST_API: string = 'http://localhost:8050';
 
   // Http Header
-  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
   constructor(private httpClient: HttpClient) {}
 
   // Add
   AddTrainer(data: Trainer): Observable<any> {
     let API_URL = `${this.REST_API}/create`;
     return this.httpClient
-      .post(API_URL, data)
+      .post(API_URL, data,{ headers: this.httpHeaders })
       .pipe(catchError(this.handleError));
   }
 
@@ -35,8 +35,8 @@ export class TrainerService {
   }
 
   // Get single object
-  GetTrainer(id: any): Observable<any> {
-    let API_URL = `${this.REST_API}/${id}`;
+  GetTrainer(id: number): Observable<any> {
+    let API_URL = `${this.REST_API}/read/${id}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
       map((res: any) => {
         return res || {};
@@ -46,7 +46,7 @@ export class TrainerService {
   }
 
   // Update
-  updateTrainer(id: any, data: any): Observable<any> {
+  updateTrainer(data: any,id:any): Observable<any> {
     let API_URL = `${this.REST_API}/update/${id}`;
     return this.httpClient
       .put(API_URL, data, { headers: this.httpHeaders })

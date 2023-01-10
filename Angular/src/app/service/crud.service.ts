@@ -18,7 +18,7 @@ export class CrudService {
   }
 
   // Node/Express API
-  REST_API: string = 'http://localhost:8000/api';
+  REST_API: string = 'http://localhost:8700';
 
   // Http Header
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -61,6 +61,14 @@ export class CrudService {
     let API_URL = `${this.REST_API}/delete-training/${id}`;
     return this.httpClient
       .delete(API_URL, { headers: this.httpHeaders })
+      .pipe(catchError(this.handleError));
+  }
+
+  //Search
+  search(data: String): Observable<any> {
+    let API_URL = `${this.REST_API}/search-training`;
+    return this.httpClient
+      .post(API_URL, data)
       .pipe(catchError(this.handleError));
   }
 

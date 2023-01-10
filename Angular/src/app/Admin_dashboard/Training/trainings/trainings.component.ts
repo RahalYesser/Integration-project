@@ -12,6 +12,7 @@ import { CrudService } from 'src/app/service/crud.service';
 export class TrainingsComponent implements OnInit {
   trainingForm: FormGroup;
   Trainings: any = [];
+  filterBy: any;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -40,6 +41,7 @@ export class TrainingsComponent implements OnInit {
     if(window.confirm('Do you want to go ahead?')) {
       this.crudService.deleteTraining(id).subscribe((res: any) => {
         this.Trainings.splice(i, 1);
+        window.location.reload();
       })
     }
   }
@@ -47,6 +49,7 @@ export class TrainingsComponent implements OnInit {
     this.crudService.AddTraining(this.trainingForm.value)
     .subscribe(() => {
         console.log('Data added successfully!')
+        window.location.reload();
         this.ngZone.run(() => (<any>this.router).navigateByUrl('/trainings'))
       }, (err) => {
         console.log(err);
@@ -57,6 +60,8 @@ export class TrainingsComponent implements OnInit {
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
+
+  
 }
 export class CardOverviewExample {}
 export class GridListOverviewExample {}

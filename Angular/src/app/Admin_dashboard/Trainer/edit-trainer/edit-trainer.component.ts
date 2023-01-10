@@ -27,6 +27,7 @@ export class EditTrainerComponent implements OnInit {
         image:res['image'],
         password: res['password']
       });
+      console.log(this.updateForm.value)
     });
     this.updateForm = this.formBuilder.group({
       name: [''],
@@ -35,12 +36,12 @@ export class EditTrainerComponent implements OnInit {
       password: ['']
     })
   }
-  ngOnInit() { }
+  ngOnInit() {console.log(this.getId) }
   onUpdate(): any {
-    this.trainerService.updateTrainer(this.getId, this.updateForm.value)
+    this.trainerService.updateTrainer(this.updateForm.value,this.getId)
     .subscribe(() => {
         console.log('Data updated successfully!')
-        this.ngZone.run(() => this.router.navigateByUrl('/trainers'))
+        this.ngZone.run(() => this.router.navigate(['/trainers']))
       }, (err) => {
         console.log(err);
     });

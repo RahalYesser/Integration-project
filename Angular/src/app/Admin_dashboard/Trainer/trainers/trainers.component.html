@@ -6,7 +6,7 @@
   <mat-drawer-content>
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <div class="container-fluid page">
-      <div class=" page__box p-3 mt-2">Trainers list <button class="add" data-bs-toggle="modal" data-bs-target="#AddModal">Add Training <span class="sr-only"></span></button></div>
+      <div class=" page__box p-3 mt-2">Trainers<button class="add" data-bs-toggle="modal" data-bs-target="#AddModal">Add Trainer <span class="sr-only"></span></button></div>
 
       <div class="page__content shadow p-3 position-relative">
             <mat-grid-list cols="3" >
@@ -15,9 +15,9 @@
                   <div class="card radius-15">
                     <div class="card-body text-center">
                       <div class="p-4 border radius-15">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="110" height="110" class="rounded-circle shadow" alt="">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar4.png" width="110" height="110" class="rounded-circle shadow" alt="">
                         <h5 class="mb-0">{{trainer.name}}</h5>
-                        <p class="mb-3">{{trainer.email}}</p>
+                        <h6 class="mb-3">{{trainer.email}}</h6>
                         <div class="list-inline contacts-social mt-3 mb-3">
                           <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="d-grid"> <a href="#" class="btn btn-outline-primary radius-15">Contact Me</a>
                         </div>
-                        <button class="btn btn-sm btn-primary" routerLink="/edit-Trainer/{{trainer.id}}">Edit</button>
+                        <button class="btn btn-sm btn-primary" routerLink="/edit-trainer/{{trainer.id}}">Edit</button>
                         <button class="btn btn-sm btn-danger" (click)="delete(trainer.id, i)">Delete</button>
                       </div>
                     </div>

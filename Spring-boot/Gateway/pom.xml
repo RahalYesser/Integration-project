@@ -38,7 +38,15 @@
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency> -->
 		
-	</dependencies>
+   
+ 
+   <dependency>
+     <groupId>io.jsonwebtoken</groupId>
+     <artifactId>jjwt</artifactId>
+     <version>0.9.1</version>
+   </dependency>
+   
+ </dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectv1/features/auth/data/models/user_model.dart';
+import '../../../auth/data/models/courses_model.dart';
 import '/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:go_router/go_router.dart';
+import 'package:validators/validators.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -11,9 +14,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  User? user = FirebaseAuth.instance.currentUser;
-
+  CoursesModel courses = CoursesModel(course: []);
   UserModel loggedInUser = UserModel(email: '', name: '', password: '');
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
@@ -27,13 +30,22 @@ class _ProfilePageState extends State<ProfilePage> {
       loggedInUser = UserModel.fromMap(data!);
       setState(() {});
     });
+    FirebaseFirestore.instance
+        .collection("courses")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      var data = value.data();
+      courses = CoursesModel.fromMap(data!);
+      setState(() {});
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile Page"),
+        title: const Text("Profile"),
         centerTitle: true,
       ),
       body: Stack(
@@ -91,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Information",
+                                      "Courses List",
                                       style: TextStyle(
                                         fontSize: 17.0,
                                         fontWeight: FontWeight.w800,
@@ -100,147 +112,47 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Divider(
                                       color: Colors.grey[300],
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.home,
-                                          color: Colors.blueAccent[400],
-                                          size: 35,
-                                        ),
-                                        SizedBox(
-                                          width: 20.0,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "javascript",
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                            Text(
-                                              "",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.grey[400],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.auto_awesome,
-                                          color: Colors.yellowAccent[400],
-                                          size: 35,
-                                        ),
-                                        SizedBox(
-                                          width: 20.0,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "spring boot",
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                            Text(
-                                              "",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.grey[400],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.favorite,
-                                          color: Colors.pinkAccent[400],
-                                          size: 35,
-                                        ),
-                                        SizedBox(
-                                          width: 20.0,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "nodeJs",
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                            Text(
-                                              "",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.grey[400],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.people,
-                                          color: Colors.lightGreen[400],
-                                          size: 35,
-                                        ),
-                                        SizedBox(
-                                          width: 20.0,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "kotlin",
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                            Text(
-                                              "",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.grey[400],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
+                                    Expanded(
+child: ListView.builder(
+itemCount: courses.course.length,
+  itemBuilder: (context, index) {
+    return Column(
+      children: [
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          '${courses.course[index]}',
+          style: TextStyle(
+            fontSize: 15.0,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            courses.course.removeAt(index);
+            FirebaseFirestore.instance
+                .collection("courses")
+                .doc(user!.uid)
+                .set(courses.toMap());
+            setState(() {});
+          },
+          child: Text(
+            "X",
+            style: TextStyle(color: Colors.red),
+          ),
+        ),
+      ],
+    ),
+    Divider(
+      color: Colors.grey,
+    ),
+  ],
+    );
+
+},
+),
+),
                                   ],
                                 ),
                               )))),
@@ -270,50 +182,15 @@ class _ProfilePageState extends State<ProfilePage> {
                           height: 5.0,
                         ),
                         Text(
-                          "4",
+                          '${courses.course.length}',
                           style: TextStyle(
                             fontSize: 15.0,
                           ),
                         )
                       ],
                     )),
-                    Container(
-                      child: Column(children: [
-                        Text(
-                          'Birthday',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 14.0),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          'April 7th',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                          ),
-                        )
-                      ]),
-                    ),
-                    Container(
-                        child: Column(
-                      children: [
-                        Text(
-                          'Age',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 14.0),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          '19 yrs',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                          ),
-                        )
-                      ],
-                    )),
+                    
+                    
                   ],
                 ),
               )))
@@ -336,10 +213,10 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
         currentIndex: 1,
         onTap: (int index) {
-          /*if (index == 0) {
+          if (index == 0) {
             // Navigate to the Courses screen
-            Navigator.of(context).pushNamed(Courses.routeName);
-          }*/
+            GoRouter.of(context).goNamed("Posts");
+          }
           if (index == 2) {
             // Handle logout here
             BlocProvider.of<AuthBloc>(context).add(LogoutEvent());

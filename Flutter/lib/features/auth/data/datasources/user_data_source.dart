@@ -24,6 +24,11 @@ class UserDataSourceImpl implements UserDataSource {
     "email": user.email,
     "password":user.password
   });
+
+  await db.collection('courses').doc(firebaseService.getAuth().currentUser?.uid).set({
+    "uid": credential.user?.uid,
+    "course":""
+  });
 }
 
 
