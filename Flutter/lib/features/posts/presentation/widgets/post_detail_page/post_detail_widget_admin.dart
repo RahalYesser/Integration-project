@@ -14,7 +14,6 @@ class PostDetailWidgetAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-
      padding: const EdgeInsets.all(8),
       child: Column(
         children: [
@@ -60,63 +59,6 @@ class PostDetailWidgetAdmin extends StatelessWidget {
             ),
           ),
           Divider(
-
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: [
-           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-           
-            children: [
-              Image.network(
-                 post.image,
-                 //width: 80
-              ),
-          
-              Column(
-                children : [
-                  Text(
-                   post.name,
-                    style: const TextStyle(
-                     fontSize: 22,
-                     fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  const Divider(
-                    height: 50,
-                  ),
-
-                  Text( "By "+ post.userId,
-                    style: const TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ]
-             )
-            ],
-          ),
-          
-          const Divider(
-            height: 50,
-          ),
-          Text( "Date : " +
-            post.date,
-            style: const TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          const Divider(
-            height: 50,
-          ),
-          Text(
-            post.description,
-            style: const TextStyle(
-              fontSize: 16,
-            ),
-          ),
-          const Divider(
-
             height: 50,
           ),
           Row(
