@@ -28,8 +28,8 @@ public class Trainer {
 
 	public String name;
 	@Column(length = 2000, columnDefinition = "TEXT")
-	public String mail;
-	private String imageUrl;
+	public String email;
+	private String image;
 	private String password;
     
 }

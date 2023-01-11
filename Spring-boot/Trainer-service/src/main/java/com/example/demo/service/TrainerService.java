@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,7 +22,10 @@ public class TrainerService {
         return repository.findAll();
         
     }
-
+    public Trainer findbyId(Integer id){
+        Optional<Trainer> t =repository.findById(id);
+        return t.get(); 
+    }
     public Page<Trainer> findAll(int size,int nb){
         return repository.findAll(PageRequest.of(nb, size));
     }

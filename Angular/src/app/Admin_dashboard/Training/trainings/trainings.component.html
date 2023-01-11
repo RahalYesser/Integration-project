@@ -8,8 +8,14 @@
     <div class="container-fluid page">
       <div class="page__box p-3 mt-2">Trainings  <button class="add" data-bs-toggle="modal" data-bs-target="#AddModal">Add Training</button></div>
       <div class="page__content shadow p-3 position-relative">
+        <div class="input-group rounded">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+          <span class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
         <mat-grid-list cols="3" >
-          <mat-grid-tile class="flip-card ml-4" *ngFor="let training of Trainings; let i = index">
+          <mat-grid-tile class="flip-card ml-4" *ngFor="let training of Trainings; let i = index" >
             <div class="container mx-auto mt-4">
               <div class="row">
                 <div class="col-md-4">
@@ -21,14 +27,7 @@
                 <h6 class="card-text">{{training.date}}</h6>
                 <h6 class="card-text">{{training.description}}</h6>
                    <a href="#" class="btn mr-5" routerLink="/edit/{{training._id}}"><i class="fas fa-edit"></i> Edit</a>
-                   <a href="#" class="btn mr-5" (click)="delete(training._id, i)"><i class="fas fa-edit"></i> Delete</a>
-                   <!-- <ul *ngFor="let training of Trainings;let i = index">
-                     <li *ngFor="let course of Courses;let i = index">
-                      <span ngIf*="training.trainerName === course.Sname;">
-                        {{course.Sname}}
-                      </span>
-                     </li>
-                   </ul> -->
+                   <a class="btn mr-5" (click)="delete(training._id, i)"><i class="fas fa-edit"></i> Delete</a>
               </div>
             </div>
             </div>

@@ -16,10 +16,9 @@ import com.example.demo.entity.Trainer;
 import com.example.demo.service.TrainerService;
 
 @RestController
-@RequestMapping
-@CrossOrigin(origins = "*")
+@RequestMapping()
+@CrossOrigin(origins ="http://localhost:4200")
 public class TrainerController {
-
 
     private final TrainerService service;
 
@@ -42,18 +41,24 @@ public class TrainerController {
         return service.save(trainer);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestParam Integer id){
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Integer id){
         service.deleteById(id);
     }
 
 
-    @PutMapping("/update")
-    public Trainer updateTrainer(@RequestBody Trainer trainer){
-        return service.save(trainer);
-    }
+    @PutMapping(value="/update/{id}")
+    public Trainer updateTrainer( @RequestBody Trainer data,@PathVariable Integer id ){
+        Trainer trainer =service.findbyId(id);
+        trainer.setName(data.getName());
+        trainer.setEmail(data.getEmail());
+        trainer.setImage(data.getImage());
+        trainer.setPassword(data.getPassword());
+        service.save(trainer);
+        return trainer;
+    };
 
-    @GetMapping("/{id}")
+    @GetMapping("/read/{id}")
     public Trainer getTrainer(@PathVariable Integer id){
         return service.getById(id);
     }
@@ -64,8 +69,8 @@ public class TrainerController {
                 @RequestParam("name") String name) {
                     return service.findbyName(nb, nb, name);
             
-        }
-    }
+     }
+}
     
     
 

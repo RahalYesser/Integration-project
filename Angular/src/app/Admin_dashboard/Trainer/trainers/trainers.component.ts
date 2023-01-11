@@ -35,6 +35,7 @@ export class TrainersComponent {
     this.trainerService.AddTrainer(this.trainerForm.value)
     .subscribe(() => {
         console.log('Data added successfully!')
+        window.location.reload();
         this.ngZone.run(() => (<any>this.router).navigateByUrl('/trainers'))
       }, (err) => {
         console.log(err);
@@ -46,6 +47,7 @@ export class TrainersComponent {
     if(window.confirm('Do you want to go ahead?')) {
       this.trainerService.deleteTrainer(id).subscribe((res: any) => {
         this.Trainers.splice(i, 1);
+        window.location.reload();
       })
     }
   }

@@ -16,7 +16,6 @@ const BASE_URL = "http://10.0.2.2:8081/TRAINING-SERVICE/api/training/";
 
 class PostRemoteDataSourceImpl implements PostRemoteDataSource {
   final http.Client client;
-  
 
   PostRemoteDataSourceImpl({required this.client});
   @override
@@ -48,22 +47,19 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
       "description": postModel.description,
     };
 
-    final response =
-        await client.post(Uri.parse(BASE_URL + "create"), body: json.encode(body),
+    final response = await client.post(Uri.parse(BASE_URL + "create"),
+        body: json.encode(body),
         headers: {
-        "content-type" : "application/json",
-        "accept" : "application/json",
-      }
-        );
-
+          "content-type": "application/json",
+          "accept": "application/json",
+        });
 
     if (response.statusCode == 200) {
       return Future.value(unit);
     } else {
       print(response.statusCode);
-      
-       throw ServerException();
-      
+
+      throw ServerException();
     }
   }
 
@@ -71,8 +67,9 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
   Future<Unit> deletePost(int postId) async {
     final response = await client.delete(
       Uri.parse(BASE_URL + "delete/${postId.toString()}"),
-      headers: {"Content-Type": "application/json",
-                 "accept" : "application/json",
+      headers: {
+        "Content-Type": "application/json",
+        "accept": "application/json",
       },
     );
 
@@ -95,14 +92,11 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
       "description": postModel.description,
     };
 
-    final response = await client.put(
-      Uri.parse(BASE_URL + "update"),body: json.encode(body),
-        headers: {
-        "content-type" : "application/json",
-        "accept" : "application/json",
-      }
-       
-    );
+    final response = await client
+        .put(Uri.parse(BASE_URL + "update"), body: json.encode(body), headers: {
+      "content-type": "application/json",
+      "accept": "application/json",
+    });
 
     if (response.statusCode == 200) {
       return Future.value(unit);

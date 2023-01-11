@@ -1,5 +1,5 @@
 export class Trainer {
-  _id!: number;
+  _id!: String;
   name!: String;
   email!: String;
   image!: String;

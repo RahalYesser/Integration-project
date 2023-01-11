@@ -24,6 +24,9 @@ export class ProfileComponent {
     let userDetails = await this.keycloakService.loadUserProfile();
     console.log(userDetails);
   }
+  logout() {
+    this.keycloakService.logout();
+  }
   onsend(){
     this.http.sendEmail(this.sendForm.value).subscribe(
       data => {
