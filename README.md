@@ -22,7 +22,7 @@ Our mission for this project revolves around the development of a web and mobile
 <h2>Functionnal needs :</h2>
 
 <ul>
-    <li>Admin :</li>
+    <li><h4>Admin :</h4></li>
       <ul>
 	   <li>log in to administration interface</li>	
 	   <li>manage training</li>		
@@ -33,7 +33,7 @@ Our mission for this project revolves around the development of a web and mobile
 </ul>  
 
 <ul>
-    <li>Trainer :</li>
+    <li><h4>Trainer :</h4></li>
       <ul>
 	   <li>consult list of trainings</li>	
 	   <li>consult list of assigned training</li>		
@@ -43,13 +43,17 @@ Our mission for this project revolves around the development of a web and mobile
 </ul>
 
 
-<h3>Student :</h3>
+<ul>
+	<li><h4>Student :</h4></li>
+	<ul>
  	    <li>can consult list of trainings</li>	
 	    <li>create an account</li>	
 	    <li>log in</li>	
 	    <li>register for training</li>	
  	    <li>can consult list of registered training</li>
-        
+	</ul>
+</ul>
+
 <h2>Frameworks :</h2>
 
 <div align="center" >
