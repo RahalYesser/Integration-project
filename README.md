@@ -57,35 +57,29 @@ Our mission for this project revolves around the development of a web and mobile
 <h2>Frameworks :</h2>
 
 <div align="center" >
-    <img  width="400px" height="200px" src="https://miro.medium.com/max/1400/1*o5FmjKTPdJTbhGE2MIjo6w.jpeg"><img>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img  width="400px" height="200px" src="https://cdn.searchenginejournal.com/wp-content/uploads/2019/04/the-seo-guide-to-angular.png"><img>
+    <img  width="400px" height="200px" src="https://miro.medium.com/max/1400/1*o5FmjKTPdJTbhGE2MIjo6w.jpeg"/>
+    <img  width="400px" height="200px" src="https://cdn.searchenginejournal.com/wp-content/uploads/2019/04/the-seo-guide-to-angular.png"/>
 </div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 <div align="center">
-    <img width="400px" height="200px" src="https://miro.medium.com/max/1400/1*i2fRBk3GsYLeUk_Rh7AzHw.png"><img>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img width="400px" height="200px" src="https://docs.flutter.dev/assets/images/flutter-logo-sharing.png"><img>
+    <img width="400px" height="200px" src="https://miro.medium.com/max/1400/1*i2fRBk3GsYLeUk_Rh7AzHw.png"/>
+    <img width="400px" height="200px" src="https://docs.flutter.dev/assets/images/flutter-logo-sharing.png"/>
 </div>
 
 <h2>Data Bases :</h2>
 
 <div align="center" >
-    <img width="250px" height="150px" src="https://firebase.google.com/images/social.png"><img>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img width="250px" height="150px" src="https://community.jaguar-network.com/wp-content/uploads/2017/06/mysql-1.jpg"><img>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img width="250px" height="150px" src="https://www.howtogeek.com/wp-content/uploads/csit/2021/07/f5932bc2.jpg?height=200p&trim=2,2,2,2"><img>
+    <img width="250px" height="150px" src="https://firebase.google.com/images/social.png"/>
+    <img width="250px" height="150px" src="https://community.jaguar-network.com/wp-content/uploads/2017/06/mysql-1.jpg"/>
+    <img width="250px" height="150px" src="https://www.howtogeek.com/wp-content/uploads/csit/2021/07/f5932bc2.jpg?height=200p&trim=2,2,2,2"/>
 </div>
 
 <h2>Tools :</h2>
 
 <div align="center" >
-    <img width="250px" height="150px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmhTPN8_gszuz16rA6KgmUr57SAB3JABicQg&usqp=CAU"><img>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img width="250px" height="150px" src="https://media.licdn.com/dms/image/C510BAQFGjkYhPJ9ZKg/company-logo_200_200/0/1519896238068?e=2147483647&v=beta&t=UafsLgu_QWDkWWRmsTn_oboQ6X-0pu1kc0u5qJhhM6k"><img>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img width="250px" height="150px" src="https://media.licdn.com/dms/image/C5633AQF6qrMZw4ywFQ/thumbnail-720-1280/0/1593534339544?e=2147483647&v=beta&t=WIHeJ5HJF9PALaouaCebbem3edgRrDEqSGMTzQRKT20"><img>
+    <img width="250px" height="150px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmhTPN8_gszuz16rA6KgmUr57SAB3JABicQg&usqp=CAU"/>
+    <img width="250px" height="150px" src="https://media.licdn.com/dms/image/C510BAQFGjkYhPJ9ZKg/company-logo_200_200/0/1519896238068?e=2147483647&v=beta&t=UafsLgu_QWDkWWRmsTn_oboQ6X-0pu1kc0u5qJhhM6k"/>
+    <img width="250px" height="150px" src="https://media.licdn.com/dms/image/C5633AQF6qrMZw4ywFQ/thumbnail-720-1280/0/1593534339544?e=2147483647&v=beta&t=WIHeJ5HJF9PALaouaCebbem3edgRrDEqSGMTzQRKT20"/>
      
 </div>
 
